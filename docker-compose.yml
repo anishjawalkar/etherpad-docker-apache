@@ -1,0 +1,25 @@
+services:
+  etherpad:
+    image: etherpad/etherpad:latest
+    restart: always
+    environment:
+      NODE_ENV: production
+      DB_TYPE: postgres
+      DB_HOST: postgres
+      DB_NAME: etherpad
+      DB_USER: etherpad
+      DB_PASS: example
+      TRUST_PROXY: "true"
+    ports:
+      - "127.0.0.1:8086:9001"
+    volumes:
+      - ./data/plugins:/opt/etherpad-lite/src/plugin_packages
+      - ./data/var:/opt/etherpad-lite/var
+
+  postgres:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: etherpad
+      POSTGRES_USER: etherpad
+      POSTGRES_PASSWORD: example
