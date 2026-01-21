@@ -85,7 +85,7 @@ Advantages:
     AuthUserFile /etc/apache2/etherpad-users
     Require valid-user
 </Location>
-
+```
 
 This method is simple and suitable for:
 
@@ -100,10 +100,12 @@ Apache DBD Authentication (Database-Backed)
 For production-style authentication, Apache DBD can be used.
 
 Enable Required Modules
+```
 a2enmod dbd authn_dbd
 systemctl reload apache2
-
+```
 Example DBD Configuration (Sanitized)
+```
 DBDriver pgsql
 DBDParams "host=db.example.internal port=5432 dbname=authdb user=authuser password=example"
 DBDMin 4
@@ -122,7 +124,7 @@ Authentication Query Example
 
     Require valid-user
 </Location>
-
+```
 
 Notes:
 
